@@ -1,0 +1,79 @@
+<!-- Is it better to use switch for main containers? -->
+<ng-container *ngIf="buttonType === 0 || buttonType === 1">
+  <!-- fill/outline -->
+  <ng-container *ngIf="buttonView === 0 || buttonView === 1">
+    <!-- small / large -->
+    <button
+      [ngClass]="{
+        filled: buttonType === 0,
+        outlined: buttonType === 1,
+        small: buttonView === 0,
+        large: buttonView === 1
+      }"
+      *ngIf="iconType === 0; else icon_left"
+      (click)="click()"
+    >
+      {{ buttonLabel }} <mat-icon>trending_flat</mat-icon>
+    </button>
+    <ng-template #icon_left>
+      <button
+        class="leftArrow"
+        [ngClass]="{
+          filled: buttonType === 0,
+          outlined: buttonType === 1,
+          small: buttonView === 0,
+          large: buttonView === 1
+        }"
+        *ngIf="iconType === 1; else noIcon"
+      >
+        <mat-icon>trending_flat</mat-icon> {{ buttonLabel }}
+      </button>
+    </ng-template>
+    <ng-template #noIcon>
+      <button
+        [ngClass]="{
+          filled: buttonType === 0,
+          outlined: buttonType === 1,
+          small: buttonView === 0,
+          large: buttonView === 1
+        }"
+        *ngIf="getType(iconType) == 'undefined'"
+      >
+        {{ buttonLabel }}
+      </button>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="buttonView === 2 || buttonView === 3">
+    <!-- cart -->
+    <button
+      [ngClass]="{
+        filled: buttonType === 0,
+        outlined: buttonType === 1,
+        square: buttonView === 2,
+        round: buttonView === 3
+      }"
+      *ngIf="iconType === 2"
+      (click)="addToCart()"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="buttonType === 2">
+  <!-- link -->
+  <button class="link" *ngIf="iconType === 0; else leftArrow">
+    {{ buttonLabel }}<mat-icon>trending_flat</mat-icon>
+  </button>
+
+  <ng-template #leftArrow>
+    <button class="link leftArrow" *ngIf="iconType === 1; else noIcon">
+      <mat-icon>trending_flat</mat-icon>
+      {{ buttonLabel }}
+    </button>
+  </ng-template>
+  <ng-template #noIcon>
+    <button class="link" *ngIf="getType(iconType) == 'undefined'">
+      {{ buttonLabel }}
+    </button>
+  </ng-template>
+</ng-container>
