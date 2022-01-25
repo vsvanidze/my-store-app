@@ -1,9 +1,9 @@
 /* functions */
-@function calcFont($elSize, $rootSize){
-	$remSize: $elSize/$rootSize;
+@function calcFont($elementSize, $rootSize){
+	$remSize: $elementSize/$rootSize;
 	@return #{$remSize}rem;
 }
-@function calcLineHeight($lineHeight, $elSize){
-	$unitlessSize: $lineHeight/$elSize;
+@function calcLineHeight($lineHeight, $elementSize){
+	$unitlessSize: $lineHeight/$elementSize;
 	@return #{$unitlessSize};
 }

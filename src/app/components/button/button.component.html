@@ -1,79 +1,103 @@
-<!-- Is it better to use switch for main containers? -->
-<ng-container *ngIf="buttonType === 0 || buttonType === 1">
+<ng-container
+  *ngIf="
+    buttonType === typeOfButton.fill || buttonType === typeOfButton.outline
+  "
+>
   <!-- fill/outline -->
-  <ng-container *ngIf="buttonView === 0 || buttonView === 1">
+  <ng-container
+    *ngIf="
+      buttonView === viewOfButton.small || buttonView === viewOfButton.large
+    "
+  >
     <!-- small / large -->
     <button
+      class="button "
       [ngClass]="{
-        filled: buttonType === 0,
-        outlined: buttonType === 1,
-        small: buttonView === 0,
-        large: buttonView === 1
+        filled: buttonType === typeOfButton.fill,
+        outlined: buttonType === typeOfButton.outline,
+        small: buttonView === viewOfButton.small,
+        large: buttonView === viewOfButton.large
       }"
-      *ngIf="iconType === 0; else icon_left"
+      *ngIf="iconPlace === iconOfButton.right; else icon_left"
       (click)="click()"
     >
-      {{ buttonLabel }} <mat-icon>trending_flat</mat-icon>
+      {{ buttonLabel }} <mat-icon>{{buttonIcon}}</mat-icon>
     </button>
     <ng-template #icon_left>
       <button
-        class="leftArrow"
+        class="button leftIcon"
         [ngClass]="{
-          filled: buttonType === 0,
-          outlined: buttonType === 1,
-          small: buttonView === 0,
-          large: buttonView === 1
+          filled: buttonType === typeOfButton.fill,
+          outlined: buttonType === typeOfButton.outline,
+          small: buttonView === viewOfButton.small,
+          large: buttonView === viewOfButton.large
         }"
-        *ngIf="iconType === 1; else noIcon"
+        *ngIf="iconPlace === iconOfButton.left; else noIcon"
+        (click)="click()"
       >
-        <mat-icon>trending_flat</mat-icon> {{ buttonLabel }}
+        <mat-icon>{{buttonIcon}}</mat-icon> {{ buttonLabel }}
       </button>
     </ng-template>
     <ng-template #noIcon>
       <button
+        class="button "
         [ngClass]="{
-          filled: buttonType === 0,
-          outlined: buttonType === 1,
-          small: buttonView === 0,
-          large: buttonView === 1
+          filled: buttonType === typeOfButton.fill,
+          outlined: buttonType === typeOfButton.outline,
+          small: buttonView === viewOfButton.small,
+          large: buttonView === viewOfButton.large
         }"
-        *ngIf="getType(iconType) == 'undefined'"
+        *ngIf="getType(buttonIcon) == 'undefined'"
+        (click)="click()"
       >
         {{ buttonLabel }}
       </button>
     </ng-template>
   </ng-container>
-  <ng-container *ngIf="buttonView === 2 || buttonView === 3">
-    <!-- cart -->
+  <ng-container *ngIf="buttonView === viewOfButton.square || buttonView === viewOfButton.round">
+    <!-- square / round -->
     <button
+      class="button "
       [ngClass]="{
-        filled: buttonType === 0,
-        outlined: buttonType === 1,
-        square: buttonView === 2,
-        round: buttonView === 3
+        filled: buttonType === typeOfButton.fill,
+        outlined: buttonType === typeOfButton.outline,
+        square: buttonView === viewOfButton.square,
+        round: buttonView === viewOfButton.round
       }"
-      *ngIf="iconType === 2"
-      (click)="addToCart()"
+      *ngIf="iconPlace === iconOfButton.center"
+      (click)="click()"
     >
-      <mat-icon>shopping_cart</mat-icon>
+      <mat-icon>{{buttonIcon}}</mat-icon>
     </button>
   </ng-container>
 </ng-container>
-<ng-container *ngIf="buttonType === 2">
+<ng-container *ngIf="buttonType === typeOfButton.link">
   <!-- link -->
-  <button class="link" *ngIf="iconType === 0; else leftArrow">
-    {{ buttonLabel }}<mat-icon>trending_flat</mat-icon>
+  <button
+    (click)="click()"
+    class="button link"
+    *ngIf="iconPlace === iconOfButton.right; else leftIcon"
+  >
+    {{ buttonLabel }}<mat-icon>{{buttonIcon}}</mat-icon>
   </button>
 
-  <ng-template #leftArrow>
-    <button class="link leftArrow" *ngIf="iconType === 1; else noIcon">
-      <mat-icon>trending_flat</mat-icon>
+  <ng-template #leftIcon>
+    <button
+      (click)="click()"
+      class="button link leftIcon"
+      *ngIf="iconPlace === iconOfButton.left; else noIcon"
+    >
+      <mat-icon>{{buttonIcon}}</mat-icon>
       {{ buttonLabel }}
     </button>
   </ng-template>
   <ng-template #noIcon>
-    <button class="link" *ngIf="getType(iconType) == 'undefined'">
-      {{ buttonLabel }}
+    <button
+      (click)="click()"
+      class="button link"
+      *ngIf="getType(buttonIcon) == 'undefined'"
+    >
+      {{ buttonLabel}}
     </button>
   </ng-template>
 </ng-container>

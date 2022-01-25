@@ -1,12 +1,12 @@
-@import '../../../assets/scss/variables';
-@import '../../../assets/scss/mixins';
-@import '../../../assets/scss/functions';
-button{ 
+@use './src/assets/scss/variables' as variable;
+@use './src/assets/scss/mixins' as mixin;
+@use './src/assets/scss/functions' as function;
+.button { 
     display: inline-flex;
     align-items: center;
     justify-content: center;   
-    @include textView($text-brightBg, calcFont(14, $root-font-size), calcLineHeight(17, 14), false, capitalize);
-    @include button(138px, 46px, $main-color, $main-radius);
+    @include mixin.textView(variable.$text-brightBg, function.calcFont(14, variable.$root-font-size), function.calcLineHeight(17, 14), false, capitalize);
+    @include mixin.button(138px, 46px, variable.$main-color, variable.$main-radius);
     padding: 15px 10px;
     margin: 20px 29px 20px 0;
     border: 0;
@@ -17,12 +17,10 @@ button{
     & .mat-icon{
         margin-left: 12px;
     }
-    &.leftArrow{
+    &.leftIcon{
         & .mat-icon{
             margin-left: 0;
             margin-right: 12px;
-            transform: rotate(180deg);
-            transform-origin: center center;
         }
     }    
     &.square, &.round{
@@ -36,17 +34,17 @@ button{
         border-radius: 23px;
     }
     &.outlined{
-        color: $text-lightBg;
-        border: 1px solid $main-color;
+        color: variable.$text-lightBg;
+        border: 1px solid variable.$main-color;
         background: none;
         &:hover{
-            color: $main-color;
-            box-shadow: inset 0px 0px 3px $main-color;
+            color: variable.$main-color;
+            box-shadow: inset 0px 0px 3px variable.$main-color;
         }
         &.square, &.round{
-            border-color: $border-light;
+            border-color: variable.$border-light;
             &:hover{
-                border-color: $main-color;
+                border-color: variable.$main-color;
             }
         }
     }
@@ -58,24 +56,24 @@ button{
     &.link{
         min-width: auto;
         height: initial;
-        color: $text-lightBg;
+        color: variable.$text-lightBg;
         padding: 0;
+        background: none;
         &:hover{
-            color: $main-color;
+            color: variable.$main-color;
          }
          & .mat-icon{
              height: 12px;
              line-height: 0.5;
              margin-left: 12px;
              &:hover{
-                 color: $main-color;
+                 color: variable.$main-color;
              }
          }
-         &.leftArrow{
+         &.leftIcon{
             & .mat-icon{
                 margin-left: 0;
                 margin-right: 12px;
-                transform: rotate(180deg);
             }
         }  
     }
