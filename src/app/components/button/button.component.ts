@@ -17,14 +17,9 @@ export class ButtonComponent {
   @Input() buttonLabel?: string = 'button';
   @Input() buttonIcon?: string;
 
-  @Output() onClick: EventEmitter<string> = new EventEmitter<string>();   
+  @Output() onClick: EventEmitter<any> = new EventEmitter();   
   
   click(){ 
     this.onClick.emit();
   }
-
-  getType(val:any) { 
-    return typeof val;
-  }
-
 }
