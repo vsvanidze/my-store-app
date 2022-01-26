@@ -17,7 +17,7 @@ export class ButtonComponent {
   @Input() buttonLabel?: string = 'button';
   @Input() buttonIcon?: string;
 
-  @Output() onClick: EventEmitter<any> = new EventEmitter();   
+  @Output() onClick: EventEmitter<void> = new EventEmitter();   
   
   click(){ 
     this.onClick.emit();
