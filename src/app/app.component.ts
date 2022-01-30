@@ -8,10 +8,7 @@ import { buttonView, buttonType, iconPosition } from './core/models/button.enum'
 })
 
 export class AppComponent {
-  public type = buttonType;
-  public view = buttonView;
-  public icon = iconPosition;
-  
+
   click() {
 
   }
