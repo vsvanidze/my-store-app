@@ -1,0 +1,97 @@
+<ng-container
+  *ngIf="
+    buttonType === typeOfButton.fill || buttonType === typeOfButton.outline
+  "
+>
+  <!-- fill/outline -->
+  <ng-container
+    *ngIf="
+      buttonView === viewOfButton.small || buttonView === viewOfButton.large
+    "
+  >
+    <!-- small / large -->
+    <button
+      class="button"
+      [ngClass]="{
+        filled: buttonType === typeOfButton.fill,
+        outlined: buttonType === typeOfButton.outline,
+        small: buttonView === viewOfButton.small,
+        large: buttonView === viewOfButton.large
+      }"
+      *ngIf="iconPlace === iconOfButton.right; else icon_left"
+      (click)="click()"
+    >
+      {{ buttonLabel }} <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+    </button>
+    <ng-template #icon_left>
+      <button
+        class="button leftIcon"
+        [ngClass]="{
+          filled: buttonType === typeOfButton.fill,
+          outlined: buttonType === typeOfButton.outline,
+          small: buttonView === viewOfButton.small,
+          large: buttonView === viewOfButton.large
+        }"
+        *ngIf="iconPlace === iconOfButton.left; else noIcon"
+        (click)="click()"
+      >
+        <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+        {{ buttonLabel }}
+      </button>
+    </ng-template>
+    <ng-template #noIcon>
+      <button
+        class="button"
+        [ngClass]="{
+          filled: buttonType === typeOfButton.fill,
+          outlined: buttonType === typeOfButton.outline,
+          small: buttonView === viewOfButton.small,
+          large: buttonView === viewOfButton.large
+        }"
+        (click)="click()"
+      >
+        {{ buttonLabel }}
+      </button>
+    </ng-template>
+  </ng-container>
+  <ng-container
+    *ngIf="
+      buttonView === viewOfButton.square || buttonView === viewOfButton.round
+    "
+  >
+    <!-- square / round -->
+    <button
+      class="button"
+      [ngClass]="{
+        filled: buttonType === typeOfButton.fill,
+        outlined: buttonType === typeOfButton.outline,
+        square: buttonView === viewOfButton.square,
+        round: buttonView === viewOfButton.round
+      }"
+      *ngIf="iconPlace === iconOfButton.center && buttonIcon"
+      (click)="click()"
+    >
+      <mat-icon>{{ buttonIcon }}</mat-icon>
+    </button>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="buttonType === typeOfButton.link">
+  <!-- link -->
+  <button
+    (click)="click()"
+    class="button link"
+    *ngIf="iconPlace === iconOfButton.right; else leftIcon"
+  >
+    {{ buttonLabel }}<mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+  </button>
+  <ng-template #leftIcon>
+    <button
+      (click)="click()"
+      class="button link leftIcon"
+      *ngIf="iconPlace === iconOfButton.left"
+    >
+      <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+      {{ buttonLabel }}
+    </button>
+  </ng-template>
+</ng-container>

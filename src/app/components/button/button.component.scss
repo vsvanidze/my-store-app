@@ -1,0 +1,94 @@
+@use "./src/assets/scss/variables" as variable;
+@use "./src/assets/scss/mixins" as mixin;
+@use "./src/assets/scss/functions" as function;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include mixin.textView(
+    variable.$text-brightBg,
+    function.calcFont(14, variable.$root-font-size),
+    function.calcLineHeight(17, 14),
+    false,
+    capitalize
+  );
+  @include mixin.button(
+    138px,
+    46px,
+    variable.$main-color,
+    variable.$main-radius
+  );
+  padding: 15px 10px;
+  margin: 20px 29px 20px 0;
+  border: 0;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    box-shadow: inset 0px 0px 3px #fff;
+  }
+  & .mat-icon {
+    margin-left: 12px;
+  }
+  &.leftIcon {
+    & .mat-icon {
+      margin-left: 0;
+      margin-right: 12px;
+    }
+  }
+  &.square,
+  &.round {
+    min-width: 46px;
+    padding: 11px;
+    & .mat-icon {
+      margin-left: 0;
+    }
+  }
+  &.round {
+    border-radius: 23px;
+  }
+  &.outlined {
+    color: variable.$text-lightBg;
+    border: 1px solid variable.$main-color;
+    background: none;
+    &:hover {
+      color: variable.$main-color;
+      box-shadow: inset 0px 0px 3px variable.$main-color;
+    }
+    &.square,
+    &.round {
+      border-color: variable.$border-light;
+      &:hover {
+        border-color: variable.$main-color;
+      }
+    }
+  }
+  &.large {
+    min-width: 200px;
+    height: 50px;
+    padding: 16px 30px;
+  }
+  &.link {
+    min-width: auto;
+    height: initial;
+    color: variable.$text-lightBg;
+    padding: 0;
+    background: none;
+    &:hover {
+      color: variable.$main-color;
+    }
+    & .mat-icon {
+      height: 12px;
+      line-height: 0.5;
+      margin-left: 12px;
+      &:hover {
+        color: variable.$main-color;
+      }
+    }
+    &.leftIcon {
+      & .mat-icon {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+    }
+  }
+}
