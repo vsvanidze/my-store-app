@@ -11,7 +11,7 @@
   >
     <!-- small / large -->
     <button
-      class="button "
+      class="button"
       [ngClass]="{
         filled: buttonType === typeOfButton.fill,
         outlined: buttonType === typeOfButton.outline,
@@ -21,7 +21,7 @@
       *ngIf="iconPlace === iconOfButton.right; else icon_left"
       (click)="click()"
     >
-      {{ buttonLabel }} <mat-icon *ngIf="buttonIcon">{{buttonIcon}}</mat-icon>
+      {{ buttonLabel }} <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
     </button>
     <ng-template #icon_left>
       <button
@@ -35,12 +35,13 @@
         *ngIf="iconPlace === iconOfButton.left; else noIcon"
         (click)="click()"
       >
-        <mat-icon *ngIf="buttonIcon">{{buttonIcon}}</mat-icon> {{ buttonLabel }}
+        <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+        {{ buttonLabel }}
       </button>
     </ng-template>
     <ng-template #noIcon>
       <button
-        class="button "
+        class="button"
         [ngClass]="{
           filled: buttonType === typeOfButton.fill,
           outlined: buttonType === typeOfButton.outline,
@@ -53,10 +54,14 @@
       </button>
     </ng-template>
   </ng-container>
-  <ng-container *ngIf="buttonView === viewOfButton.square || buttonView === viewOfButton.round">
+  <ng-container
+    *ngIf="
+      buttonView === viewOfButton.square || buttonView === viewOfButton.round
+    "
+  >
     <!-- square / round -->
     <button
-      class="button "
+      class="button"
       [ngClass]="{
         filled: buttonType === typeOfButton.fill,
         outlined: buttonType === typeOfButton.outline,
@@ -66,7 +71,7 @@
       *ngIf="iconPlace === iconOfButton.center && buttonIcon"
       (click)="click()"
     >
-      <mat-icon>{{buttonIcon}}</mat-icon>
+      <mat-icon>{{ buttonIcon }}</mat-icon>
     </button>
   </ng-container>
 </ng-container>
@@ -77,7 +82,7 @@
     class="button link"
     *ngIf="iconPlace === iconOfButton.right; else leftIcon"
   >
-    {{ buttonLabel }}<mat-icon *ngIf="buttonIcon">{{buttonIcon}}</mat-icon>
+    {{ buttonLabel }}<mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
   </button>
   <ng-template #leftIcon>
     <button
@@ -85,8 +90,8 @@
       class="button link leftIcon"
       *ngIf="iconPlace === iconOfButton.left"
     >
-      <mat-icon *ngIf="buttonIcon">{{buttonIcon}}</mat-icon>
+      <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
       {{ buttonLabel }}
     </button>
-  </ng-template>  
+  </ng-template>
 </ng-container>
