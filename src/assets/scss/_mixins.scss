@@ -1,22 +1,33 @@
 /* mixins */
-@mixin textView($color, $font-size, $line-height, $font-family: false, $text-transform: false ) {
-    color: $color;
-    font-size: $font-size;
-    line-height: $line-height;
-    font-family: $font-family;
-    text-transform: $text-transform;
+@mixin textView(
+  $color,
+  $font-size,
+  $line-height,
+  $font-family: false,
+  $text-transform: false
+) {
+  color: $color;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family;
+  text-transform: $text-transform;
 }
-@mixin button($min-width, $height, $background-color, $border-radius ){
-	@if $background-color == 'none' { 
-        min-width: $min-width;
-        height: $height;       
-        border-radius: $border-radius;
-        cursor: pointer;
-	} @else { 
-        min-width: $min-width;
-        height: $height;
-        border-radius: $border-radius;
-        background-color: $background-color;
-        cursor: pointer;
-	} 
+@mixin button($min-width, $height, $background-color, $border-radius) {
+  @if $background-color == "none" {
+    min-width: $min-width;
+    height: $height;
+    border-radius: $border-radius;
+    cursor: pointer;
+  } @else {
+    min-width: $min-width;
+    height: $height;
+    border-radius: $border-radius;
+    background-color: $background-color;
+    cursor: pointer;
+  }
+}
+
+@mixin input($width, $height) {
+  width: $width;
+  height: $height;
 }

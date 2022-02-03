@@ -1,0 +1,33 @@
+@use "/src/assets/scss/variables" as variable;
+@use "/src/assets/scss/mixins" as mixin;
+
+.form__input--rectangle {
+  @include mixin.input(265px, 40px);
+  border: 1px solid variable.$border-light;
+  border-radius: variable.$input-radius;
+  outline-color: variable.$secondary-color;
+  padding: 0 0.8em;
+  margin-left: 3rem;
+}
+
+.form__input--line {
+  @include mixin.input(265px, 40px);
+  border: none;
+  border-bottom: 1px solid variable.$border-light;
+  outline: none;
+  margin-left: 3rem;
+}
+
+.form__input--line:focus {
+  border-bottom: 2px solid variable.$secondary-color;
+}
+
+.form-field {
+  position: relative;
+}
+
+.check-icon {
+  position: absolute;
+  top: 25px;
+  left: 300px;
+}
