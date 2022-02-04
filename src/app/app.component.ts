@@ -8,5 +8,5 @@ import { buttonView, buttonType, iconPosition } from './core/models/button.enum'
 })
 
 export class AppComponent {
-
+  
 }

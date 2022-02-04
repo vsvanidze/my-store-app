@@ -1,11 +1,20 @@
 /* color */
 $text-brightBg: #fff;
 $text-lightBg: #000;
-$main-color:#595CFF;
-$border-light:#E6E6EB;
+$main-color: #595cff;
+$border-light: #e6e6eb;
+$text-ultraLight: #afb1bd;
 
 /* font */
 $root-font-size: 16;
 
 /* borders */
-$main-radius:4px;
+$main-radius: 4px;
+
+/* background */
+$footer-background: #f9f9fb;
+$footer-border: rgba(175, 177, 189, 0.2);
+
+/* width */
+$main-width: 1440;
+$center-width: 1160;

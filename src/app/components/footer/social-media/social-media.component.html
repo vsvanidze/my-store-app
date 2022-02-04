@@ -1,0 +1,13 @@
+<ng-container *ngIf="socialMedia.status == 'ok'">
+  <div class="socialMediaBlock">
+    <h2>{{ socialMedia.title }}</h2>
+    <a [href]="'tel' + socialMedia.number">{{ socialMedia.number }}</a>
+    <ul>
+      <li *ngFor="let item of socialMedia.socialLinks; let i = index">
+        <a [href]="item.url" [title]="item.name" target="_blank"
+          ><img [src]="item.icon" [alt]="item.name"
+        /></a>
+      </li>
+    </ul>
+  </div>
+</ng-container>

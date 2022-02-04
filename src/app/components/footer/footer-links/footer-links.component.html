@@ -1,0 +1,17 @@
+<ng-container class="footerLinks" *ngIf="footerLinks.status == 'ok'">
+  <div
+    class="linkBlock"
+    *ngFor="let linkBlock of footerLinks.links; let i = index"
+  >
+    <ng-template [ngIf]="i < 3">
+      <h2>
+        <a [href]="linkBlock.titleRout">{{ linkBlock.title }}</a>
+      </h2>
+      <ul *ngFor="let subLink of linkBlock.subLinks">
+        <li>
+          <a [href]="subLink.subLinkRout">{{ subLink.subLinkTitle }}</a>
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+</ng-container>
