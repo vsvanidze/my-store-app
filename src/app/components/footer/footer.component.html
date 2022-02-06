@@ -1,9 +1,15 @@
 <footer class="footerWrapper">
-    <div class="center">
-        <app-social-media></app-social-media>
-        <app-footer-links></app-footer-links>
-    </div>
-    <div class="center">
-        <p>© Copyright,  {{copyrightYear}}</p>
-    </div>    
+  <div class="center">
+    <ng-container
+      *ngIf="footerService.footerSocialIcons$ | async as socialMedia"
+    >
+      <app-social-media [socialMedia]="socialMedia"></app-social-media>
+    </ng-container>
+    <ng-container *ngIf="footerService.footerLinksData$ | async as footerLinks">
+      <app-footer-links [footerLinks]="footerLinks"></app-footer-links>
+    </ng-container>
+  </div>
+  <div class="center">
+    <p>© Copyright, {{ copyrightYear }}</p>
+  </div>
 </footer>

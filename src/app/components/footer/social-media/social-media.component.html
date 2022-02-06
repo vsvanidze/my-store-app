@@ -1,4 +1,4 @@
-<ng-container *ngIf="socialMedia.status == 'ok'">
+<ng-container *ngIf="socialMedia.status == requestStatus.Ok">
   <div class="socialMediaBlock">
     <h2>{{ socialMedia.title }}</h2>
     <a [href]="'tel' + socialMedia.number">{{ socialMedia.number }}</a>

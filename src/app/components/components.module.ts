@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ButtonComponent } from './button/button.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,8 +20,8 @@ import { FooterLinksComponent } from './footer/footer-links/footer-links.compone
   ],
   exports: [
     ButtonComponent,
-    FooterComponent,
-    FooterLinksComponent
+    FooterComponent
   ]
 })
+
 export class ComponentsModule { }

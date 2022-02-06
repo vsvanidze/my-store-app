@@ -6,13 +6,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  min-width: 75%;
+  width: 75%;
+  min-width: 200px;
   margin-bottom: 20px;
 }
 
 .linkBlock {
-  min-width: 23%;
+  max-width: 23%;
   margin-right: 2%;
+
   & h2 {
     width: 100%;
     font-weight: normal;
@@ -23,6 +25,8 @@
       false,
       capitalize
     );
+    margin-bottom: 14px;
+
     & a {
       @include mixin.textView(
         variable.$text-lightBg,
@@ -32,18 +36,21 @@
         capitalize
       );
       text-decoration: none;
+
       &:hover {
         color: variable.$main-color;
       }
     }
-    margin-bottom: 14px;
   }
+
   & ul {
     width: 100%;
     min-width: 200px;
     list-style-type: none;
+
     & li {
       margin-bottom: 10px;
+
       & a {
         @include mixin.textView(
           variable.$text-lightBg,
@@ -53,6 +60,7 @@
           capitalize
         );
         text-decoration: none;
+
         &:hover {
           color: variable.$main-color;
         }

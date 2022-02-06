@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import { footerLinksList, FooterLinksService } from 'src/app/core/services/footerLinks.service';
+import { Component, Input } from '@angular/core';
+import { footerLinksInterface } from 'src/app/core/interface/footerLinksInterface';
+import { requestStatus } from 'src/app/core/models/status.enum';
 
 @Component({
   selector: 'app-footer-links',
   templateUrl: './footer-links.component.html',
-  styleUrls: ['./footer-links.component.scss'],
-  providers: [FooterLinksService]
+  styleUrls: ['./footer-links.component.scss']
 })
 
-export class FooterLinksComponent{
+export class FooterLinksComponent {
 
-  footerLinks: footerLinksList;
-  
-  constructor(footerLinksService: FooterLinksService) {
-    this.footerLinks = footerLinksService.getFooterLinks();
-   }
+  requestStatus = requestStatus;
+
+  @Input() footerLinks!: footerLinksInterface;
 
 }

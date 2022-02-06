@@ -1,20 +1,17 @@
-import { Component } from '@angular/core';
-import { socialMediaList, SocialMediaService } from 'src/app/core/services/socialMedia.service';
+import { Component, Input } from '@angular/core';
+import { socialMediaInterface } from 'src/app/core/interface/socialMediaInterface';
+import { requestStatus } from 'src/app/core/models/status.enum';
 
 @Component({
   selector: 'app-social-media',
   templateUrl: './social-media.component.html',
-  styleUrls: ['./social-media.component.scss'],
-  providers: [SocialMediaService]
+  styleUrls: ['./social-media.component.scss']
 })
 
 export class SocialMediaComponent {
 
-  socialMedia: socialMediaList;
-  
-  constructor(socialMediaService: SocialMediaService) {
-    this.socialMedia= socialMediaService.getSocialMedia();
-  }
+  requestStatus = requestStatus;
 
+  @Input() socialMedia!: socialMediaInterface;
 
 }

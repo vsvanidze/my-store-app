@@ -6,21 +6,32 @@
   width: 100%;
   padding: 53px 0 33px 0;
   background-color: variable.$footer-background;
+
   & .center {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: function.calcPercentage(variable.$center-width, variable.$main-width);
+    width: function.calcPercentage(
+      variable.$center-width,
+      variable.$main-width
+    );
     margin: auto;
-    &:first-of-type{
+
+    &:first-of-type {
       padding-bottom: 30px;
       border-bottom: 1px solid variable.$footer-border;
     }
-    & p{
-      @include mixin.textView(variable.$text-ultraLight, function.calcFont(12, variable.$root-font-size),
-        function.calcLineHeight(16, 12), false, capitalize );
-        margin-top: 20px;
-        margin-top: 10px;
+
+    & p {
+      @include mixin.textView(
+        variable.$text-ultraLight,
+        function.calcFont(12, variable.$root-font-size),
+        function.calcLineHeight(16, 12),
+        false,
+        capitalize
+      );
+      margin-top: 20px;
+      margin-top: 10px;
     }
-  }  
+  }
 }
