@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { requestStatus } from 'src/app/core/models/status.enum';
 import { FooterService } from 'src/app/core/services/footer.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { FooterService } from 'src/app/core/services/footer.service';
 
 export class FooterComponent {
 
-  @Input() copyrightYear: number = 2020;
+  requestStatus = requestStatus;
 
   constructor(public readonly footerService: FooterService) {
   }

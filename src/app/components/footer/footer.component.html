@@ -9,7 +9,14 @@
       <app-footer-links [footerLinks]="footerLinks"></app-footer-links>
     </ng-container>
   </div>
-  <div class="center">
-    <p>© Copyright, {{ copyrightYear }}</p>
-  </div>
+  <ng-container
+    *ngIf="footerService.footerCopyright$ | async as footerCopyright"
+  >
+    <div class="center" *ngIf="footerCopyright.status == requestStatus.Ok">
+      <p>
+        © {{ footerCopyright.copyrightText }} ,
+        {{ footerCopyright.copyrightYear }}
+      </p>
+    </div>
+  </ng-container>
 </footer>
