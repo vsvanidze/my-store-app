@@ -7,3 +7,6 @@
 	$unitlessSize: $lineHeight/$elementSize;
 	@return #{$unitlessSize};
 }
+@function calcPercentage($elementWith, $mainWidth){
+	@return #{($elementWith * 100%)/$mainWidth};
+}

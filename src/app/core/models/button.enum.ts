@@ -11,7 +11,7 @@ export enum buttonView {
     round
 }
 
-export enum iconPosition{
+export enum iconPosition {
     right,
     left,
     center
