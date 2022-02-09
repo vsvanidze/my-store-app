@@ -5,6 +5,7 @@
   [formGroup]="inputForm"
 >
   <input
+    (keyup)="onInputText(inputForm.value.input)"
     name="inputText"
     class="form__input--rectangle"
     type="text"
@@ -26,7 +27,7 @@
     formControlName="input"
   />
   <img
-    *ngIf="inputValue"
+    *ngIf="inputForm.value.input"
     src="../../../assets/images/check.svg"
     alt="check"
     class="check-icon"
