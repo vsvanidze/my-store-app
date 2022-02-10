@@ -1,0 +1,70 @@
+@use "./src/assets/scss/variables" as variable;
+@use "./src/assets/scss/mixins" as mixin;
+@use "./src/assets/scss/functions" as function;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 75%;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.linkBlock {
+  max-width: 23%;
+  margin-right: 2%;
+
+  & h2 {
+    width: 100%;
+    font-weight: normal;
+    @include mixin.textView(
+      variable.$text-lightBg,
+      function.calcFont(16, variable.$root-font-size),
+      function.calcLineHeight(24, 16),
+      false,
+      capitalize
+    );
+    margin-bottom: 14px;
+
+    & a {
+      @include mixin.textView(
+        variable.$text-lightBg,
+        function.calcFont(16, variable.$root-font-size),
+        function.calcLineHeight(24, 16),
+        false,
+        capitalize
+      );
+      text-decoration: none;
+
+      &:hover {
+        color: variable.$main-color;
+      }
+    }
+  }
+
+  & ul {
+    width: 100%;
+    min-width: 200px;
+    list-style-type: none;
+
+    & li {
+      margin-bottom: 10px;
+
+      & a {
+        @include mixin.textView(
+          variable.$text-lightBg,
+          function.calcFont(16, variable.$root-font-size),
+          function.calcLineHeight(24, 16),
+          false,
+          capitalize
+        );
+        text-decoration: none;
+
+        &:hover {
+          color: variable.$main-color;
+        }
+      }
+    }
+  }
+}

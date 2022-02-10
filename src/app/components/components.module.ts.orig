@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+<<<<<<< HEAD
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
+
+@NgModule({
+  declarations: [ButtonComponent, InputComponent],
+  imports: [CommonModule, MatIconModule, ReactiveFormsModule],
+  exports: [ButtonComponent, InputComponent],
+})
+export class ComponentsModule {}
+=======
+
+import { ButtonComponent } from './button/button.component';
 import { FooterComponent } from './footer/footer.component';
 import { SocialMediaComponent } from './footer/social-media/social-media.component';
 import { FooterLinksComponent } from './footer/footer-links/footer-links.component';
@@ -14,10 +25,17 @@ import { FooterLinksComponent } from './footer/footer-links/footer-links.compone
     ButtonComponent,
     FooterComponent,
     SocialMediaComponent,
-    FooterLinksComponent,
-    InputComponent,
+    FooterLinksComponent
   ],
-  imports: [CommonModule, MatIconModule, ReactiveFormsModule],
-  exports: [ButtonComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    MatIconModule
+  ],
+  exports: [
+    ButtonComponent,
+    FooterComponent
+  ]
 })
-export class ComponentsModule {}
+
+export class ComponentsModule { }
+>>>>>>> main

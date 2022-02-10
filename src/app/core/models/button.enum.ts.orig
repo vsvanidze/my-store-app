@@ -1,0 +1,25 @@
+export enum buttonType {
+  fill,
+  outline,
+  link,
+}
+
+export enum buttonView {
+  small,
+  large,
+  square,
+  round,
+}
+
+export enum iconPosition {
+<<<<<<< HEAD
+  right,
+  left,
+  center,
+}
+=======
+    right,
+    left,
+    center
+}
+>>>>>>> main
