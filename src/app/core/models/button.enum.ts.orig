@@ -12,7 +12,14 @@ export enum buttonView {
 }
 
 export enum iconPosition {
+<<<<<<< HEAD
   right,
   left,
   center,
 }
+=======
+    right,
+    left,
+    center
+}
+>>>>>>> main

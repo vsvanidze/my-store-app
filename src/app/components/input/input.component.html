@@ -1,0 +1,35 @@
+<form
+  class="form-field"
+  autocomplete="off"
+  *ngIf="type === inputType.rectangle"
+  [formGroup]="inputForm"
+>
+  <input
+    (keyup)="onInputText(inputForm.value.input)"
+    name="inputText"
+    class="form__input--rectangle"
+    type="text"
+    placeholder="Input text"
+    formControlName="input"
+  />
+</form>
+<form
+  class="form-field"
+  autocomplete="off"
+  *ngIf="type === inputType.line"
+  [formGroup]="inputForm"
+>
+  <input
+    name="inputText"
+    class="form__input--line"
+    type="text"
+    placeholder="Input text"
+    formControlName="input"
+  />
+  <img
+    *ngIf="inputForm.value.input"
+    src="../../../assets/images/check.svg"
+    alt="check"
+    class="check-icon"
+  />
+</form>
