@@ -1,0 +1,21 @@
+<form [formGroup]="main">
+  <app-checkbox
+    [list]="listOfCheckbox"
+    formControlName="checkbox"
+  ></app-checkbox>
+  <app-colors [list]="listOfColors" formControlName="colors"></app-colors>
+  <app-radio [list]="listOfRadio" formControlName="radio"></app-radio>
+  <app-counter
+    [counterStyle]="counterStyle.round"
+    formControlName="counter"
+  ></app-counter>
+  <app-counter
+    [counterStyle]="counterStyle.rectangle"
+    formControlName="counter"
+  ></app-counter>
+</form>
+<hr />
+<pre>
+    {{ main.value | json }}
+  </pre
+>

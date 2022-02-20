@@ -1,0 +1,18 @@
+<form [formGroup]="colorsForm" *ngIf="list.status == requestStatus.Ok">
+  <div class="colorList">
+    <div class="simpleColor" *ngFor="let item of list.colorData">
+      <input
+        [id]="item.colorName"
+        type="radio"
+        class="customColor"
+        [value]="item.colorHex"
+        name="color"
+        formControlName="color"
+      />
+      <label class="radioLabel" [title]="item.colorName" [for]="item.colorName">
+        <span [style.background]="item.colorHex"></span>
+        {{ item.colorName }}
+      </label>
+    </div>
+  </div>
+</form>

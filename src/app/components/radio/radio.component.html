@@ -1,0 +1,17 @@
+<form [formGroup]="radioForm" *ngIf="list.status == requestStatus.Ok">
+  <div class="radioList">
+    <div class="simpleRadio" *ngFor="let item of list.inputData">
+      <input
+        [id]="item.id"
+        type="radio"
+        class="customRadio"
+        [value]="item.value"
+        name="radio"
+        formControlName="radio"
+      />
+      <label class="radioLabel" [for]="item.id">
+        {{ item.value }}
+      </label>
+    </div>
+  </div>
+</form>

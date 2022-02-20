@@ -1,12 +1,14 @@
 /* functions */
-@function calcFont($elementSize, $rootSize){
-	$remSize: $elementSize/$rootSize;
-	@return #{$remSize}rem;
+@function calcFont($elementSize, $rootSize) {
+  $remSize: calc($elementSize/$rootSize);
+  @return #{$remSize}rem;
 }
-@function calcLineHeight($lineHeight, $elementSize){
-	$unitlessSize: $lineHeight/$elementSize;
-	@return #{$unitlessSize};
+
+@function calcLineHeight($lineHeight, $elementSize) {
+  $unitlessSize: calc($lineHeight/$elementSize);
+  @return #{$unitlessSize};
 }
-@function calcPercentage($elementWith, $mainWidth){
-	@return #{($elementWith * 100%)/$mainWidth};
+
+@function calcPercentage($elementWith, $mainWidth) {
+  @return #{calc(($elementWith * 100%) / $mainWidth)};
 }

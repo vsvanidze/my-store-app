@@ -1,0 +1,32 @@
+<form [formGroup]="counterForm">
+  <div class="counter">
+    <button
+      [disabled]="disabled"
+      [ngClass]="{
+        round: counterStyles.round === counterStyle,
+        rectangle: counterStyles.rectangle === counterStyle
+      }"
+      class="counterButton minus"
+      (click)="minus()"
+    >
+      -
+    </button>
+    <input
+      formControlName="counter"
+      name="counter"
+      readonly
+      [value]="counterValue"
+    />
+    <button
+      [disabled]="disabled"
+      [ngClass]="{
+        round: counterStyles.round === counterStyle,
+        rectangle: counterStyles.rectangle === counterStyle
+      }"
+      class="counterButton plus"
+      (click)="plus()"
+    >
+      +
+    </button>
+  </div>
+</form>
