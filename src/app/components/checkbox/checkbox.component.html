@@ -1,0 +1,12 @@
+<form [formGroup]="form" *ngIf="list.status == requestStatus.Ok">
+  <div class="checkboxList" formArrayName="checkboxGroup">
+    <div
+      class="simpleCheckbox"
+      [formGroupName]="i"
+      *ngFor="let item of getControlById().controls; let i = index"
+    >
+      <input id="{{ i }}" type="checkbox" formControlName="checked" />
+      <label for="{{ i }}">{{ list.inputData[i].value }}</label>
+    </div>
+  </div>
+</form>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { buttonView, buttonType, iconPosition } from './core/models/button.enum';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,4 @@ import { buttonView, buttonType, iconPosition } from './core/models/button.enum'
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-}
+export class AppComponent { }

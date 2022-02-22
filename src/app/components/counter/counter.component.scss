@@ -1,0 +1,74 @@
+@use "./src/assets/scss/variables" as variable;
+@use "./src/assets/scss/mixins" as mixin;
+@use "./src/assets/scss/functions" as function;
+
+.counter {
+  display: flex;
+  align-items: center;
+  min-width: 108px;
+  margin-bottom: 20px;
+
+  & .counterButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    @include mixin.textView(
+      variable.$text-lightBg,
+      14px,
+      14px,
+      false,
+      capitalize
+    );
+    font-weight: bold;
+    margin-right: 8px;
+    border-radius: variable.$percent-radius;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background: variable.$main-color;
+    }
+
+    &.rectangle {
+      background: none;
+
+      &:hover {
+        background: variable.$input-background;
+      }
+    }
+
+    &.round {
+      color: variable.$main-color;
+      background: variable.$input-background;
+
+      &:hover {
+        color: #fff;
+        background: variable.$main-color;
+      }
+    }
+  }
+
+  & input {
+    display: inline-block;
+    width: 49px;
+    @include mixin.textView(
+      variable.$text-lightBg,
+      14px,
+      17px,
+      false,
+      capitalize
+    );
+    text-align: center;
+    margin-right: 8px;
+    border: 0;
+    cursor: default;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

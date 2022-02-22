@@ -1,0 +1,51 @@
+@use "./src/assets/scss/variables" as variable;
+@use "./src/assets/scss/mixins" as mixin;
+@use "./src/assets/scss/functions" as function;
+
+.radioList {
+  width: 100%;
+
+  & .simpleRadio {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  & input {
+    display: none;
+  }
+
+  & label {
+    display: flex;
+    align-items: center;
+    @include mixin.textView(
+      variable.$text-lightBg,
+      12px,
+      15px,
+      false,
+      capitalize
+    );
+    cursor: pointer;
+
+    &::before {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 1px solid variable.$main-color;
+      border-radius: variable.$percent-radius;
+      background: variable.$input-background;
+      margin-right: 20px;
+    }
+  }
+
+  & input:checked ~ label {
+    &::before {
+      content: "\2022";
+      font-size: 40px;
+      color: #fff;
+      background: variable.$main-color;
+    }
+  }
+}
