@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 import { counterStyle } from 'src/app/core/models/counter.enum';
 
@@ -15,7 +16,10 @@ import { counterStyle } from 'src/app/core/models/counter.enum';
     }
   ]
 })
+
 export class CounterComponent implements ControlValueAccessor, OnInit {
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   counterStyles = counterStyle;
 
@@ -25,19 +29,19 @@ export class CounterComponent implements ControlValueAccessor, OnInit {
 
   counterValue: number = 0;
 
-  onChange = (value: any) => { };
+  onChange = (value: number) => { };
   onTouche = () => { };
 
   constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.counterForm.valueChanges.subscribe((value) => {
+    this.counterForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       this.writeValue(value);
     });
   }
 
   counterForm = this.fb.group({
-    counter: ['0', [Validators.required]],
+    counter: ['0', [Validators.required, Validators.min(1)]],
   });
 
   get myForm() {
@@ -47,11 +51,7 @@ export class CounterComponent implements ControlValueAccessor, OnInit {
   minus() {
     this.onTouche();
 
-    if (this.counterValue > 1) {
-      this.counterValue -= this.incrementNumber;
-    } else {
-      this.counterValue = 1;
-    }
+    this.counterValue -= this.incrementNumber;
 
     this.onChange(this.counterValue);
   }
@@ -81,6 +81,15 @@ export class CounterComponent implements ControlValueAccessor, OnInit {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.counterForm.disable();
+    } else {
+      this.counterForm.enable();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 import { checkboxInterface } from 'src/app/core/interface/checkboxInterface';
 import { requestStatus } from 'src/app/core/models/status.enum';
@@ -19,10 +20,13 @@ import { requestStatus } from 'src/app/core/models/status.enum';
 
 export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
   requestStatus = requestStatus;
 
   @Input() list!: checkboxInterface;
   disabled: boolean = false;
+
 
   onChange = (value: any) => { };
   onTouched = () => { };
@@ -30,7 +34,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   constructor(public fb: FormBuilder) { }
 
   ngOnInit() {
-    this.form.valueChanges.subscribe((value) => {
+    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       this.writeValue(value);
     });
     this.generateForm();
@@ -57,8 +61,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   getControlById(): FormArray {
-    const testVal = this.form.get('checkboxGroup') as FormArray;
-    return testVal;
+    return this.form.get('checkboxGroup') as FormArray;
   }
 
   writeValue(value: number): void {
@@ -74,6 +77,15 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.form.disable();
+    } else {
+      this.form.enable();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }

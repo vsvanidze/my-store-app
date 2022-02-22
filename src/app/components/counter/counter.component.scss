@@ -23,9 +23,15 @@
     );
     font-weight: bold;
     margin-right: 8px;
-
+    border-radius: variable.$percent-radius;
     border: 0;
+    background: none;
     cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background: variable.$main-color;
+    }
 
     &.rectangle {
       background: none;
@@ -37,7 +43,6 @@
 
     &.round {
       color: variable.$main-color;
-      border-radius: variable.$percent-radius;
       background: variable.$input-background;
 
       &:hover {

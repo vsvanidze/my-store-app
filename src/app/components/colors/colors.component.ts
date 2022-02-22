@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 import { colorsInterface } from 'src/app/core/interface/colorsInterface';
 import { requestStatus } from 'src/app/core/models/status.enum';
@@ -17,7 +18,10 @@ import { requestStatus } from 'src/app/core/models/status.enum';
     },
   ]
 })
+
 export class ColorsComponent implements ControlValueAccessor, OnInit {
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   requestStatus = requestStatus;
 
@@ -31,7 +35,7 @@ export class ColorsComponent implements ControlValueAccessor, OnInit {
   constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.colorsForm.valueChanges.subscribe((value) => {
+    this.colorsForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       this.writeValue(value);
     });
   }
@@ -57,6 +61,15 @@ export class ColorsComponent implements ControlValueAccessor, OnInit {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.colorsForm.disable();
+    } else {
+      this.colorsForm.enable();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }

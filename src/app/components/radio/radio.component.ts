@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 import { radioInterface } from 'src/app/core/interface/radioInterface';
 import { requestStatus } from 'src/app/core/models/status.enum';
@@ -16,7 +17,10 @@ import { requestStatus } from 'src/app/core/models/status.enum';
     },
   ]
 })
+
 export class RadioComponent implements ControlValueAccessor, OnInit {
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   requestStatus = requestStatus;
 
@@ -29,7 +33,7 @@ export class RadioComponent implements ControlValueAccessor, OnInit {
   constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.radioForm.valueChanges.subscribe((value) => {
+    this.radioForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       this.writeValue(value);
     });
   }
@@ -55,6 +59,15 @@ export class RadioComponent implements ControlValueAccessor, OnInit {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.radioForm.disable();
+    } else {
+      this.radioForm.enable();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 }
