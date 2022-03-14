@@ -1,0 +1,17 @@
+<div class="card" *ngFor="let card of cardInfo">
+  <div class="imageBlock">
+    <img [src]="card.image" [alt]="card.title" />
+  </div>
+  <app-button
+    [buttonType]="type.fill"
+    [buttonView]="view.round"
+    [iconPlace]="icon.center"
+    [buttonIcon]="iconCart"
+  ></app-button>
+  <h2>{{ card.title }}</h2>
+  <h3>
+    price<span>{{ card.price }}</span>
+  </h3>
+  {{card.rating.rate }}
+  {{card.category}}
+</div>

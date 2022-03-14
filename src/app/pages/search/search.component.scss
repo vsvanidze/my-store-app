@@ -1,0 +1,81 @@
+@use "./src/assets/scss/variables" as variable;
+@use "./src/assets/scss/mixins" as mixin;
+@use "./src/assets/scss/functions" as function;
+
+.mainContent {
+  width: 100%;
+
+  & .center {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: function.calcPercentage(
+      variable.$center-width,
+      variable.$main-width
+    );
+    margin: auto;
+
+    & h2 {
+      width: 100%;
+      @include mixin.textView(
+        variable.$text-lightBg,
+        function.calcFont(32, variable.$root-font-size),
+        function.calcLineHeight(38, 32),
+        false,
+        capitalize
+      );
+      margin-bottom: 50px;
+    }
+
+    & .filterForm{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+
+      & .mat-form-field{
+        margin-right: 4%;
+      }
+
+      & .counter{
+        margin-right: 4%;
+      }
+
+      & app-button {
+        margin-left: auto;
+      }
+    }
+
+    & .itemsList {
+      width: 100%;
+
+      & .loading {
+        width: 100%;
+        text-align: center;
+        @include mixin.textView(
+          variable.$main-color,
+          function.calcFont(32, variable.$root-font-size),
+          function.calcLineHeight(38, 32),
+          false,
+          capitalize
+        );
+      }
+    }
+
+    & > app-button {
+      margin: 0 auto 20px auto;
+    }
+
+    & .noMoreItems{
+      width: 100%;
+        text-align: center;
+        @include mixin.textView(
+          variable.$text-error,
+          function.calcFont(18, variable.$root-font-size),
+          function.calcLineHeight(18, 18),
+          false,
+          capitalize
+        );
+    }
+  }
+}

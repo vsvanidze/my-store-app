@@ -15,7 +15,7 @@ export class ButtonComponent {
   @Input() buttonType: number = this.typeOfButton.fill;
   @Input() buttonView: number = this.viewOfButton.small;
   @Input() iconPlace?: number;
-  @Input() buttonLabel?: string = 'button';
+  @Input() buttonLabel?: string;
   @Input() buttonIcon?: string;
 
   @Output() onClick: EventEmitter<void> = new EventEmitter();

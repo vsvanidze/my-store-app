@@ -1,0 +1,47 @@
+<main class="mainContent">
+  <div class="center">
+    <h2>title of the page</h2>    
+    <form [formGroup]="filterForm" class="filterForm">
+      <mat-form-field appearance="fill">
+        <mat-label>choose limit</mat-label>
+        <mat-select formControlName="limit" (ngModelChange)="OnChange($event)">
+          <mat-option *ngFor="let limit of limits" [value]="(limit.amount)">
+            {{ limit.amount }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>sort</mat-label>
+        <mat-select formControlName="sort" (ngModelChange)="OnChange($event)">
+          <mat-option *ngFor="let sort of sortTypes" [value]="sort.sortType">
+            {{ sort.sortType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="counter">{{ allData$.length }} items</span>
+      <app-button
+        [buttonType]="type.fill"
+        [buttonLabel]="copyLabel"
+        (click)="copyText()"
+      ></app-button>      
+    </form>
+
+    <div class="itemsList">
+      <p class="loading" *ngIf="allData$.length === 0">loading...</p>
+      <app-card [cardInfo]="allData$"></app-card>
+    </div>
+    <ng-container *ngIf="this.allData$.length <= this.limit">
+      <app-button
+        [buttonType]="type.fill"
+        [buttonLabel]="buttonLabel"
+        (click)="showMore()"
+        *ngIf="this.allData$.length >= this.limit; else noMoreItems"
+      ></app-button>
+      <ng-template #noMoreItems>
+        <p class="noMoreItems" *ngIf="this.allData$.length < this.limit">
+          no more items ...
+        </p>
+      </ng-template>
+    </ng-container>
+  </div>
+</main>
