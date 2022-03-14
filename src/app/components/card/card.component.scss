@@ -1,0 +1,74 @@
+@use "./src/assets/scss/variables" as variable;
+@use "./src/assets/scss/mixins" as mixin;
+@use "./src/assets/scss/functions" as function;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 23%;
+  min-width: 250px;
+  min-height: 366px;
+  margin-right: 2%;
+  margin-bottom: 40px;
+  position: relative;
+
+  & .imageBlock {
+    width: 100%;
+    height: 260px;
+    margin-bottom: 20px;
+    background: #fff;
+
+    & img {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  & app-button {
+    display: none;
+    position: absolute;
+    top: 235px;
+    right: 16px;
+  }
+
+  & h2 {
+    width: 100%;
+    @include mixin.textView(
+      variable.$text-lightBg,
+      function.calcFont(18, variable.$root-font-size),
+      function.calcLineHeight(22, 18),
+      false,
+      capitalize
+    );
+    margin-bottom: 10px;
+  }
+
+  & h3 {
+    width: 100%;
+    @include mixin.textView(
+      variable.$text-lightBg,
+      function.calcFont(14, variable.$root-font-size),
+      function.calcLineHeight(17, 14),
+      false,
+      capitalize
+    );
+
+    & span{
+        display: inline-block;
+        color: #82828B;
+        margin-left: 15px;
+    }
+  }
+
+  &:hover {
+    & app-button {
+      display: block;
+    }
+  }
+}

@@ -11,6 +11,7 @@ import { RadioComponent } from './radio/radio.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { CounterComponent } from './counter/counter.component';
 import { ColorsComponent } from './colors/colors.component';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ColorsComponent } from './colors/colors.component';
     RadioComponent,
     CheckboxComponent,
     CounterComponent,
-    ColorsComponent
+    ColorsComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { ColorsComponent } from './colors/colors.component';
     RadioComponent,
     CheckboxComponent,
     CounterComponent,
-    ColorsComponent
+    ColorsComponent,
+    CardComponent
   ]
 })
 
